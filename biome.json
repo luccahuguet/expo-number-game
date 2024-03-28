@@ -1,0 +1,20 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.6.2/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": false,
+		"rules": {
+			"recommended": true,
+			"all": false
+		},
+		"ignore": ["**/*.js", "*.js"]	
+	},
+	"javascript": {
+		"globals": []
+	},
+  "files": {
+    "ignore": ["**/*.js"]
+  }	
+}
