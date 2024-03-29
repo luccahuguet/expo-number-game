@@ -19,7 +19,7 @@ const PrimaryButton = ({ children, onPress }) => {
 
 const styles = StyleSheet.create({
   innerContainer: {
-    backgroundColor: "red",
+    backgroundColor: "crimson",
     borderRadius: 28,
     paddingVertical: 12,
     paddingHorizontal: 24,
