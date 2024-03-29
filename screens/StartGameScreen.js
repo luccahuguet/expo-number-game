@@ -6,7 +6,7 @@ const StartGameScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello, {props.name}!</Text>
-      <TextInput />
+      <TextInput style={styles.numberInput} maxLength={2} />
       <PrimaryButton> Reset </PrimaryButton>
       <PrimaryButton> Confirm</PrimaryButton>
     </View>
@@ -33,6 +33,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
+  },
+  numberInput: {
+    height: 50,
+    fontSize: 32,
+    borderBottomColor: "goldenrod",
+    borderBottomWidth: 2,
+    color: "goldenrod",
+    marginVertical: 8,
+    fontWeight: "bold",
+    width: 50,
+    textAlign: "center",
   },
 });
 
