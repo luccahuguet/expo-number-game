@@ -1,36 +1,47 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, Pressable, Text, StyleSheet } from "react-native";
 
 const PrimaryButton = ({ children, onPress }) => {
+  const pressHandler = () => {
+    if (onPress) {
+      onPress();
+    }
+  }
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.text}>{children}</Text>
-    </TouchableOpacity>
+    <View style={styles.outerContainer}>
+      <Pressable onPress={pressHandler} style={({ pressed }) => pressed ? [styles.innerContainer, styles.pressed] : styles.innerContainer}>
+        <Text style={styles.text}>{children}</Text>
+      </Pressable>
+    </View >
   );
 };
 
+
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    backgroundColor: "#007BFF",
-    borderRadius: 8,
+  innerContainer: {
+    backgroundColor: "red",
+    borderRadius: 28,
     paddingVertical: 12,
     paddingHorizontal: 24,
+    margin: 4,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     elevation: 5,
+  },
+  outerContainer: {
+    borderRadius: 28,
+    margin: 4,
+    overflow: "hidden",
+  },
+  // adds styling for ios
+  pressed: {
+    backgroundColor: "darkred",
   },
   text: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#FFFFFF",
+    color: "white",
+    textAlign: "center",
   },
 });
 
