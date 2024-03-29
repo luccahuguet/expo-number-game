@@ -5,7 +5,12 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function App() {
   return (
     <LinearGradient style={styles.rootScreen} colors={["#FF0000", "#DAA520"]}>
-      <ImageBackground source={require("./assets/background.png")} style={styles.rootScreen} resizeMode="cover" imageStyle={styles.backgroundImage}>
+      <ImageBackground
+        source={require("./assets/background.png")}
+        style={styles.rootScreen}
+        resizeMode="cover"
+        imageStyle={styles.backgroundImage}
+      >
         <StartGameScreen />
       </ImageBackground>
     </LinearGradient>
@@ -20,6 +25,6 @@ const styles = StyleSheet.create({
     // alignItems: "center"
   },
   backgroundImage: {
-    opacity: 0.15
-  }
+    opacity: 0.15,
+  },
 });

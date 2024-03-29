@@ -2,20 +2,21 @@ import React from "react";
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
 const PrimaryButton = ({ children, onPress }) => {
-  const pressHandler = () => {
-    if (onPress) {
-      onPress();
-    }
-  }
   return (
     <View style={styles.outerContainer}>
-      <Pressable onPress={pressHandler} style={({ pressed }) => pressed ? [styles.innerContainer, styles.pressed] : styles.innerContainer}>
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) =>
+          pressed
+            ? [styles.innerContainer, styles.pressed]
+            : styles.innerContainer
+        }
+      >
         <Text style={styles.text}>{children}</Text>
       </Pressable>
-    </View >
+    </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   innerContainer: {
