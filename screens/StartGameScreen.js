@@ -9,8 +9,23 @@ const StartGameScreen = (props) => {
     setEnteredValue(inputText);
   };
 
+  const resetInputHandler = () => {
+    setEnteredValue("");
+  };
+
   const confirmInputHandler = () => {
-    console.log("confirming input");
+    const chosenNumber = parseInt(enteredValue);
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      alert("Invalid number! Please choose a number between 1 and 99.", [
+        {
+          text: "Okay",
+          style: "destructive",
+          onPress: resetInputHandler(),
+        },
+      ]);
+      return;
+    }
+    console.log("cool number, and valid too!");
   };
 
   return (
@@ -28,10 +43,10 @@ const StartGameScreen = (props) => {
       />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <PrimaryButton> Reset </PrimaryButton>
+          <PrimaryButton onPress={resetInputHandler}> Reset </PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
-          <PrimaryButton> Confirm</PrimaryButton>
+          <PrimaryButton onPress={confirmInputHandler}> Confirm </PrimaryButton>
         </View>
       </View>
     </View>
