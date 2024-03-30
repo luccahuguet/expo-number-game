@@ -1,14 +1,28 @@
 // screens/GameScreen.js
 
-import React from "react";
+import { useState } from "react";
 import { View, SafeAreaView, Text, Button, StyleSheet } from "react-native";
-import Title from "../components/Title";
+import Title from "../components/ui/Title";
+import NumberContainer from "../components/game/NumberContainer";
 
-const GameScreen = () => {
+const generateRandomBetween = (min, max, exclude) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  const randomNumber = Math.floor(Math.random() * (max - min)) + min;
+  if (randomNumber === exclude) {
+    return generateRandomBetween(min, max, exclude);
+  } else {
+    return randomNumber;
+  }
+};
+
+const GameScreen = ({ userNumber }) => {
+  const initialGuess = generateRandomBetween(1, 100, userNumber);
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
-      {/* <Button title="Click Me" onPress={() => console.log("Button clicked!")} /> */}
+      <NumberContainer>{currentGuess}</NumberContainer>
       <View>
         <Text>Higher or lower?</Text>
       </View>
