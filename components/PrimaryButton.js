@@ -2,6 +2,7 @@
 
 import React from "react";
 import { View, Pressable, Text, StyleSheet } from "react-native";
+import Colors from "../constants/colors";
 
 const PrimaryButton = ({ children, onPress }) => {
   return (
@@ -22,7 +23,7 @@ const PrimaryButton = ({ children, onPress }) => {
 
 const styles = StyleSheet.create({
   innerContainer: {
-    backgroundColor: "crimson",
+    backgroundColor: Colors.primary800,
     borderRadius: 28,
     paddingVertical: 12,
     paddingHorizontal: 24,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   },
   // adds styling for ios
   pressed: {
-    backgroundColor: "darkred",
+    backgroundColor: Colors.primary600,
   },
   text: {
     fontSize: 18,
