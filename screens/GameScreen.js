@@ -5,6 +5,8 @@ import { View, SafeAreaView, Text, Button, StyleSheet } from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import InstructionText from "../components/ui/InstructionText";
+import Card from "../components/ui/Card";
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -65,8 +67,8 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or lower?</Text>
+      <Card>
+        <InstructionText>Higher or Lower?</InstructionText>
         <View style={styles.buttonContainer}>
           <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
             LOWER
@@ -75,7 +77,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
             GREATER
           </PrimaryButton>
         </View>
-      </View>
+      </Card>
       {/* <View>Log rounds</View> */}
     </View>
   );
@@ -88,9 +90,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-    paddingHorizontal: 24,
+    // justifyContent: "space-between",
+    // width: "100%",
+    padding: 24,
   },
 });
 
