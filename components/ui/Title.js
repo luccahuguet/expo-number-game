@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.accent500,
     padding: 12,
     marginVertical: 16,
+    // fontFamily: "open-sans-bold",
+    fontStyle: "italic",
   },
 });
 
