@@ -13,9 +13,15 @@ import * as SplashScreen from "expo-splash-screen";
 export default function App() {
   const [pickedNumber, setPickedNumber] = useState(null);
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [roundsNumber, setRoundsNumber] = useState(0);
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const [fontError, setFontError] = useState(false);
+
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
 
   useEffect(() => {
     async function loadFonts() {
@@ -50,6 +56,11 @@ export default function App() {
     setGameIsOver(true);
   };
 
+  const startNewGameHandler = () => {
+    setPickedNumber(null);
+    setRoundsNumber(0);
+  };
+
   let content = <StartGameScreen onPickNumber={pickNumberHandler} />;
 
   if (pickedNumber) {
@@ -59,7 +70,13 @@ export default function App() {
   }
 
   if (gameIsOver && pickedNumber) {
-    content = <GameOverScreen />;
+    content = (
+      <GameOverScreen
+        userNumber={pickedNumber}
+        onRestart={startNewGameHandler}
+        roundsNumber={roundsNumber}
+      />
+    );
   }
 
   return (
