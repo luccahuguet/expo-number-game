@@ -48,5 +48,6 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: "bold",
     color: Colors.primary800,
+    fontSize: 24,
   },
 });
