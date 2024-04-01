@@ -7,6 +7,7 @@ import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import InstructionText from "../components/ui/InstructionText";
+import GuessLogItem from "../components/game/GuessLogItem";
 import Card from "../components/ui/Card";
 
 const generateRandomBetween = (min, max, exclude) => {
@@ -82,7 +83,11 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       </Card>
       <View>
         {rounds.map((round) => (
-          <Text key={round}>{round}</Text>
+          <GuessLogItem
+            key={round}
+            roundNumber={rounds.length - rounds.indexOf(round)}
+            guess={round}
+          />
         ))}
       </View>
     </View>
