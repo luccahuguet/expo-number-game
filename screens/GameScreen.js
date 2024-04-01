@@ -30,7 +30,6 @@ const GameScreen = ({ userNumber, onGameOver }) => {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      alert("Game over!");
       onGameOver();
     }
   }, [currentGuess, userNumber, onGameOver]);
