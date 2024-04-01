@@ -1,7 +1,7 @@
 // screens/GameScreen.js
 
 import { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
@@ -26,6 +26,7 @@ let maxBoundary = 100;
 const GameScreen = ({ userNumber, onGameOver }) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [rounds, setRounds] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -59,6 +60,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
         currentGuess
       );
       setCurrentGuess(nextNumber);
+      setRounds((prevRounds) => [nextNumber, ...prevRounds]);
     } else {
       console.log("Invalid direction");
     }
@@ -79,7 +81,11 @@ const GameScreen = ({ userNumber, onGameOver }) => {
           </PrimaryButton>
         </View>
       </Card>
-      {/* <View>Log rounds</View> */}
+      <View>
+        {rounds.map((round) => (
+          <Text key={round}>{round}</Text>
+        ))}
+      </View>
     </View>
   );
 };
