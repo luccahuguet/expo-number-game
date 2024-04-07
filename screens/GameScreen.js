@@ -1,7 +1,7 @@
 // screens/GameScreen.js
 
 import { useEffect, useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
@@ -28,6 +28,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [rounds, setRounds] = useState([initialGuess]);
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -66,9 +67,8 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     }
   };
 
-  return (
-    <View style={styles.screen}>
-      <Title>Opponent's Guess</Title>
+  let content = (
+    <>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         <InstructionText>Higher or Lower?</InstructionText>
@@ -81,6 +81,33 @@ const GameScreen = ({ userNumber, onGameOver }) => {
           </PrimaryButton>
         </View>
       </Card>
+    </>
+  );
+
+  if (height < 500) {
+    content = (
+      <>
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="remove" size={24} color="white" />{" "}
+            </PrimaryButton>
+          </View>
+          <NumberContainer>{currentGuess}</NumberContainer>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="add" size={24} color="white" />{" "}
+            </PrimaryButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  return (
+    <View style={styles.screen}>
+      <Title>Opponent's Guess</Title>
+      {content}
       <View>
         {rounds.map((round) => (
           <GuessLogItem
@@ -105,6 +132,13 @@ const styles = StyleSheet.create({
     // justifyContent: "space-between",
     // width: "100%",
     padding: 24,
+  },
+  buttonsContainerWide: {
+    flexDirection: "row",
+    // justifyContent: "space-between",
+    // width: "100%",
+    // paddingHorizontal: 48,
+    alignItems: "center",
   },
 });
 
