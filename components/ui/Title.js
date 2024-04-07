@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     // fontFamily: "open-sans-bold",
     fontStyle: "italic",
+    maxWidth: "80%",
+    width: 300,
   },
 });
 
