@@ -57,9 +57,6 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   imageContainer: {
-    // width: deviceWidth < 380 ? 150 : 300,
-    // height: deviceWidth < 380 ? 150 : 300,
-    // borderRadius: (deviceWidth < 380 ? 150 : 300) / 2,
     borderWidth: 3,
     borderColor: Colors.primary800,
     overflow: "hidden",
